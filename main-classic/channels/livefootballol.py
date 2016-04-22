@@ -20,7 +20,7 @@ import xbmc
 __channel__ = "livefootballol"
 __category__ = "d"
 __type__ = "generic"
-__title__ = "Torrenttv"
+__title__ = "Livefootballol"
 __language__ = "ES"
 
 host ="http://www.livefootballol.me"
