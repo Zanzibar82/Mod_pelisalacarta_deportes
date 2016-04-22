@@ -8,9 +8,8 @@ from core import logger, config
 
 # Returns an array of possible video url's from the page_url
 def get_video_url( page_url , premium = False , user="" , password="" , video_password="" ):
-    logger.info("pelisalacarta.servers.p2p server=p2p, la url es la buena")
-    print "loboo"
-    print page_url
+    logger.info("pelisalacarta.servers.p2p server=p2p, la url es la buena " + page_url)
+
     if page_url.startswith("acestream"):
         mode = "1"
         name = "acestream"
@@ -23,14 +22,12 @@ def get_video_url( page_url , premium = False , user="" , password="" , video_pa
         page_url = page_url.split("|")[0]
 
     video_data = {
-        'p2p-streams' : {
-            'url' : "plugin://plugin.video.p2p-streams/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
-        },
         'plexus' : {
             'url' : "plugin://program.plexus/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
-        },
-        'plexus-streams' : {
-            'url' : "plugin://plugin.video.plexus-streams/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
+        }
+        'p2p-streams' : {
+            'url' : "plugin://plugin.video.p2p-streams/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
+        }
     }
 }
     
