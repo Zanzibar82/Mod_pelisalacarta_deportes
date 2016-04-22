@@ -8,13 +8,13 @@
 	<language>es</language>
 
 	<fanart></fanart>
-	<thumbnail></thumbnail>
+	<thumbnail>http://i.imgur.com/4vQwJwy.png?1</thumbnail>
 	<bannermenu></bannermenu>
 
 	<update_url></update_url>
 	<version>0.1</version>
 	<date>22/04/2016</date>
-	<changes></changes>
+	<changes>Primera versión</changes>
 
 	<categories>
 		<category>all</category>		
