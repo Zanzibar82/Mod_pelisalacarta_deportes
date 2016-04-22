@@ -24,16 +24,16 @@ def get_video_url( page_url , premium = False , user="" , password="" , video_pa
     video_data = {
         'plexus' : {
             'url' : "plugin://program.plexus/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
-        }
+        },
         'p2p-streams' : {
             'url' : "plugin://plugin.video.p2p-streams/?url=%s&mode=%s&name=%s" % (page_url, mode, name)
         }
     }
-}
+
     
     video_urls = []
     
-    for plugin, data in sorted(video_data.iteritems()):
+    for plugin, data in sorted(video_data.iteritems(), reverse=True):
         video_urls.append([ "[" + plugin + "] %s" % (name), data['url']])
     
     return video_urls
