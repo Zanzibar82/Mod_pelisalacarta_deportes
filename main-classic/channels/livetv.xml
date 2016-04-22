@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<channel>
+	<id>livetv</id>
+	<name>Livetv</name>
+
+	<active>true</active>
+	<adult>false</adult>
+	<language>es</language>
+
+	<fanart></fanart>
+	<thumbnail>http://s6.postimg.org/nv9to30k1/livetvlogo.png</thumbnail>
+	<bannermenu></bannermenu>
+
+	<update_url></update_url>
+	<version>1</version>
+	<date>28/08/2015</date>
+	<changes>First pelisalacarta 4 release</changes>
+
+	<categories>
+		<category>deportes</category>
+		
+	</categories>
+
+	<settings>
+		<include_in_global_search>false</include_in_global_search>
+	</settings>
+</channel>
