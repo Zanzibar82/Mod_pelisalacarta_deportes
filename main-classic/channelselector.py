@@ -131,14 +131,13 @@ def getchanneltypes(preferred_thumb=""):
             if channel_type in dict_cat_lang:
                 title = dict_cat_lang[channel_type]
             if title == "Deportes":
-               thumbnail = "http://i.imgur.com/JC3JHe4.png"
+                thumbnail = "http://i.imgur.com/JC3JHe4.png"
             else :
                 thumbnail = urlparse.urljoin(get_thumbnail_path(preferred_thumb),
                                  "thumb_canales_"+channel_type+".png")
 
             itemlist.append(Item(title=title, channel="channelselector", action="listchannels", category=channel_type,
-                                 thumbnail=urlparse.urljoin(get_thumbnail_path(preferred_thumb),
-                                                            "thumb_canales_"+channel_type+".png"),viewmode="movie"))
+                                 thumbnail=thumbnail,viewmode="movie"))
 
     return itemlist
 
