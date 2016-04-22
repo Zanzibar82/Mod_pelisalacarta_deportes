@@ -18,7 +18,7 @@ __title__ = "StreamSports"
 __language__ = "ES"
 
 host ="http://www.streamsports.me"
-song = os.path.join(config.get_runtime_path(), 'queen-we-will-rock-you.mp3')
+song = os.path.join(config.get_runtime_path(), 'Kasabian.mp3')
 DEBUG = config.get_setting("debug")
 
 def isGeneric():
@@ -27,15 +27,15 @@ def isGeneric():
 def mainlist(item):
     logger.info("pelisalacarta.channels.streamsports mainlist")
     itemlist = []
+    #xbmc.executebuiltin('Container.Update(plugin://plugin.video.pelisalacarta/?action=listchannels)')
+    #check =xbmc.getInfoLabel('Container.FolderPath')
+    
+    xbmc.executebuiltin('xbmc.PlayMedia('+song+')')
 
-    check =xbmc.getInfoLabel('Container.FolderPath')
-    if "deportes" in check:
-        xbmc.executebuiltin('xbmc.PlayMedia('+song+')')
-
-    itemlist.append(Item(channel=__channel__, title="Agenda/Directos", action="entradas", url=host, thumbnail="http://i.imgur.com/3J5DbZA.png?1", folder=True))
-    itemlist.append(Item(channel=__channel__, title="Fútbol", action="entradas", url=host+"/football/", thumbnail="http://i.imgur.com/3J5DbZA.png?1", folder=True))
-    itemlist.append(Item(channel=__channel__, title="Baloncesto", action="entradas", url=host+"/basketball/", thumbnail="http://i.imgur.com/3J5DbZA.png?1", folder=True))
-    itemlist.append(Item(channel=__channel__, title="Más Deportes", action="categorias", url=host, thumbnail="http://i.imgur.com/3J5DbZA.png?1", folder=True))
+    itemlist.append(Item(channel=__channel__, title="Agenda/Directos", action="entradas", url=host, thumbnail="http://s6.postimg.org/as7g0t9qp/STREAMSPORTAGENDA.png",fanart="http://s6.postimg.org/5utvfp7rl/streamsportonairfan.jpg", folder=True))
+    itemlist.append(Item(channel=__channel__, title="Fútbol", action="entradas", url=host+"/football/", thumbnail="http://s6.postimg.org/5w3t949ld/streamsportsfutbolthumb.png",fanart="http://s6.postimg.org/sm2y23ssx/streamsportsfutbolfan.jpg", folder=True))
+    itemlist.append(Item(channel=__channel__, title="Baloncesto", action="entradas", url=host+"/basketball/", thumbnail="http://s6.postimg.org/cp465e0ep/streamsportbasketthumb.png",fanart="http://s6.postimg.org/rz41ckvwx/streamsportsbasketfan.jpg", folder=True))
+    itemlist.append(Item(channel=__channel__, title="Más Deportes", action="categorias", url=host, thumbnail="http://i.imgur.com/3J5DbZA.png?1",fanart="http://s6.postimg.org/azzob2a35/streamsportsallfan.jpg", folder=True))
 
     return itemlist
 
@@ -98,7 +98,7 @@ def entradas(item):
         else:
             scrapedtitle += " [COLOR blue]("+torneo+")[/COLOR]"
         
-        itemlist.append( Item(channel=__channel__, title=scrapedtitle, action="findvideos", url=host+scrapedurl, thumbnail=item.thumbnail, fulltitle=scrapedtitle, match=partido, competicion=deporte+"-"+torneo, folder=True) )
+        itemlist.append( Item(channel=__channel__, title=scrapedtitle, action="findvideos", url=host+scrapedurl, thumbnail=item.thumbnail, fanart= item.fanart,fulltitle=scrapedtitle, match=partido, competicion=deporte+"-"+torneo, folder=True) )
 
     return itemlist
 
@@ -124,11 +124,11 @@ def findvideos(item):
                 scrapedtitle = server + item.match + bitrate + idioma
                 scrapedurl= scrapedurl + "|" + item.match
         
-                itemlist.append(Item(channel=__channel__, title=scrapedtitle, url=scrapedurl, action="play", idioma=idioma, thumbnail=item.thumbnail, folder=False))
+                itemlist.append(Item(channel=__channel__, title=scrapedtitle, url=scrapedurl, action="play", idioma=idioma, thumbnail=item.thumbnail, fanart= item.fanart,folder=False))
         itemlist.sort(key=lambda item: item.idioma, reverse=True)
 
     if "No Sopcast/Acestream streams added yet" in data or len(itemlist) == 0:
-        itemlist.append(Item(channel=__channel__, title="[COLOR yellow]No hay enlaces disponibles. Inténtalo más tarde[/COLOR]", url="", action="", thumbnail=item.thumbnail, folder=False))
+        itemlist.append(Item(channel=__channel__, title="[COLOR yellow]No hay enlaces disponibles. Inténtalo más tarde[/COLOR]", url="", action="", thumbnail=item.thumbnail,fanart= "http://s6.postimg.org/8wp93eaa9/streamsportsnolinks.jpg", folder=False))
 
     return itemlist
 
