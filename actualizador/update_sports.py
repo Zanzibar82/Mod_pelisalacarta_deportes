@@ -32,7 +32,7 @@ def mainlist(item):
         title = "[COLOR darkorange]Nueva actualización: v"+version2+" a v"+version1+"  ("+fecha+")[/COLOR]"
         itemlist.append(Item(channel=CHANNELNAME, title=title, action="do_nothing", thumbnail="http://i.imgur.com/pl3ENtX.png", fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
         title = "[COLOR green]Cambios: "+message+"[/COLOR]"
-        itemlist.append(Item(channel=CHANNELNAME, title=title, action="do_nothing", thumbnail="http://i.imgur.com/pl3ENtX.pnng", fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
+        itemlist.append(Item(channel=CHANNELNAME, title=title, action="do_nothing", thumbnail="http://i.imgur.com/pl3ENtX.png", fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
     else:
         itemlist.append(Item(channel=CHANNELNAME, title="[COLOR darkorange]Ninguna actualización disponible. Versión actual: v%s[/COLOR]" % version2, action="do_nothing", thumbnail=item.thumbnail, fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
 
