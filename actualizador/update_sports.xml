@@ -12,9 +12,9 @@
 	<bannermenu></bannermenu>
 
 	<update_url></update_url>
-	<version>0.1</version>
-	<date>22/04/2016</date>
-	<changes>Primera versión</changes>
+	<version>0.11</version>
+	<date>23/04/2016</date>
+	<changes>Corregidos varios canales y servidor p2p</changes>
 
 	<categories>
 		<category>all</category>		
