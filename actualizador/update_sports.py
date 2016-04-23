@@ -29,7 +29,7 @@ def mainlist(item):
     actualizar, version1, version2, fecha, message = check()
 
     if actualizar:
-        title = "[COLOR darkorange]Nueva actualización: v"+version1+" a v"+version2+"  ("+fecha+")[/COLOR]"
+        title = "[COLOR darkorange]Nueva actualización: v"+version2+" a v"+version1+"  ("+fecha+")[/COLOR]"
         itemlist.append(Item(channel=CHANNELNAME, title=title, action="do_nothing", thumbnail="http://i.imgur.com/pl3ENtX.png", fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
         title = "[COLOR green]Cambios: "+message+"[/COLOR]"
         itemlist.append(Item(channel=CHANNELNAME, title=title, action="do_nothing", thumbnail="http://i.imgur.com/pl3ENtX.pnng", fanart="http://i.imgur.com/RHRbg7M.jpg?1", folder=False))
