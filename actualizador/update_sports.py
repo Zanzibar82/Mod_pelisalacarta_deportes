@@ -78,8 +78,8 @@ def actualiza(item):
             if not child["path"].startswith("main-classic"): continue
             if child["type"] == "blob":
                 url = "https://raw.githubusercontent.com/CmosGit/Mod_pelisalacarta_deportes/master/" + child["path"]
-                filename = os.path.join(config.get_runtime_path(), child["path"].replace("/","\\"))
-                filename = filename.replace("\\main-classic","")
+                git_file = child["path"].replace("main-classic/","")
+                filename = os.path.join(config.get_runtime_path(), git_file)
                 error_download = do_download(url, filename)
                 if error_download: error = True
                 
@@ -101,7 +101,10 @@ def actualiza(item):
         
 
 def do_download(url, localfilename):
+    # Corregimos el filename para que se adapte al sistema en el que se ejecuta
+    localfilename = os.path.normpath(localfilename)
     logger.info("pelisalacarta.channels.update_sports localfilename=%s" % localfilename)
+    logger.info("pelisalacarta.channels.update_sports url=%s" % url)
     logger.info("pelisalacarta.channels.update_sports descarga fichero...")
     inicio = time.clock()
     
@@ -110,7 +113,7 @@ def do_download(url, localfilename):
         if os.path.exists(localfilename.rsplit(".",1)[0] + ".pyo"):
             os.remove(localfilename.rsplit(".",1)[0] + ".pyo")
         data = urllib2.urlopen(url).read()
-        outfile = file(localfilename ,"w")
+        outfile = file(localfilename ,"wb")
         outfile.write(data)
         outfile.close()
         logger.info("pelisalacarta.channels.update_sports Grabado a " + localfilename)
