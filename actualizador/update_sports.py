@@ -139,9 +139,9 @@ def check():
     logger.info("pelisalacarta.channels.update_sports Versión en el repositorio: %s" % version_publicada)
 
     # Lee el fichero con la versión instalada
-    file = open(LOCAL_XML_FILE)
-    data = file.read()
-    file.close()
+    fichero = open(LOCAL_XML_FILE)
+    data = fichero.read()
+    fichero.close()
     version_local = scrapertools.find_single_match(data,"<version>([^<]+)</version>").strip()
     logger.info("pelisalacarta.channels.update_sports Versión local: %s" % version_local)
     if float(version_publicada) > float(version_local):
