@@ -47,7 +47,6 @@ def do_nothing(item):
 
 def actualiza(item):
     logger.info("pelisalacarta.channels.update_sports actualiza")
-    logger.info("pelisalacarta.channels.update_sports url=%s" % item.url)
 
     error = False
     if item.select == "servertools":
@@ -74,7 +73,7 @@ def actualiza(item):
         data = jsontools.load_json(data)
         count = 0
         progreso = dialog_progress("Progreso de la actualización", "Descargando...")
-        for i, child in enumerate(data["tree"]):
+        for child in data["tree"]:
             if not child["path"].startswith("main-classic"): continue
             if child["type"] == "blob":
                 url = "https://raw.githubusercontent.com/CmosGit/Mod_pelisalacarta_deportes/master/" + child["path"]
@@ -113,7 +112,7 @@ def do_download(url, localfilename):
         if os.path.exists(localfilename.rsplit(".",1)[0] + ".pyo"):
             os.remove(localfilename.rsplit(".",1)[0] + ".pyo")
         data = urllib2.urlopen(url).read()
-        outfile = file(localfilename ,"wb")
+        outfile = open(localfilename ,"wb")
         outfile.write(data)
         outfile.close()
         logger.info("pelisalacarta.channels.update_sports Grabado a " + localfilename)
@@ -139,7 +138,7 @@ def check():
     logger.info("pelisalacarta.channels.update_sports Versión en el repositorio: %s" % version_publicada)
 
     # Lee el fichero con la versión instalada
-    fichero = open(LOCAL_XML_FILE)
+    fichero = open(LOCAL_XML_FILE, "r")
     data = fichero.read()
     fichero.close()
     version_local = scrapertools.find_single_match(data,"<version>([^<]+)</version>").strip()
