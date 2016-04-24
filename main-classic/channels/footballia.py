@@ -31,6 +31,7 @@ def login():
             file = open(footballia_log, "r")
             user = file.readline().strip()
             password = file.readline()
+            file.close()
             data = scrapertools.cachePage("http://footballia.net/es")
             if user in data: return True, ""
 
