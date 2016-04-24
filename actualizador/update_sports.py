@@ -78,15 +78,15 @@ def actualiza(item):
             if not child["path"].startswith("main-classic"): continue
             if child["type"] == "blob":
                 url = "https://raw.githubusercontent.com/CmosGit/Mod_pelisalacarta_deportes/master/" + child["path"]
+                # Progreso
+                count += 1
+                percent = (count * 100) / len(data["tree"]) 
+                progreso.update(percent, "[B][COLOR red]Actualizado al %d%%[/COLOR][/B]" % int(percent), "Descargando archivo %s" % url.rsplit("/",1)[1])
+
                 git_file = child["path"].replace("main-classic/","")
                 filename = os.path.join(config.get_runtime_path(), git_file)
                 error_download = do_download(url, filename)
                 if error_download: error = True
-                
-                # Progreso
-                percent = (count * 100) / len(data["tree"]) 
-                progreso.update(percent, "[B][COLOR red]Actualizado al %d%%[/COLOR][/B]" % int(percent), "Descargando archivo %s" % filename.rsplit("\\",1)[1])
-                count += 1
 
 
         url = "https://raw.githubusercontent.com/CmosGit/Mod_pelisalacarta_deportes/master/actualizador/update_sports.xml"
