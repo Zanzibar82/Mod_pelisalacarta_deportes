@@ -47,16 +47,18 @@ def mainlist(item):
        item.url = "http://topbongda.com/wendy/ajax/home_matches/?page=1"
        xbmc.executebuiltin('xbmc.PlayMedia('+song+')')
     data = get_page(item.url)
-
-    patronmain ='{"current"(.*?)"count"'
+    
+    patronmain ='"object_list"(.*?)]]]]'
     matchesmain = re.compile(patronmain,re.DOTALL).findall(data)
 
     for bloque_partidos in matchesmain:
-        
         patron = '{"begin_at": "(\d+:\d+)".*?"home_team_icon": "//([^"]+)".*?"year": (\d\d\d\d), "slug": "(.*?)",.*?"on_air": (.*?),.*?"mid": (.*?), "away_team_icon": "//([^"]+)".*?"league": "(.*?)".*?"begin_at_date": ".*?, (.*?)".*?"title": "(.*?)"'
         matches=re.compile(patron,re.DOTALL).findall(bloque_partidos)
-        
-        for hora, thumbnail,year,slug,on_air,mid,fanart,league,date, title  in matches:
+        if len(matches)==0:
+            patron = '"home_team_icon": "//([^"]+)".*?"league": "(.*?)", "title": "(.*?)".*?"on_air": (.*?),.*?"away_team_icon": "//([^"]+)".*?"year": (\d\d\d\d).*?"begin_at_date": ".*?, (.*?)".*?"begin_at": "(.*?)", "mid": (.*?).*?"slug": "(.*?)"'
+            matches=re.compile(patron,re.DOTALL).findall(bloque_partidos)
+
+        for thumbnail,league,title,on_air,fanart,year,date,hora,mid,slug  in matches:
             fulltitle = title
             thumbnail = "https://"+thumbnail
             fanart = "https://"+fanart
