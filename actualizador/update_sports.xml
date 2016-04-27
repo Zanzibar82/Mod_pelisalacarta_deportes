@@ -12,9 +12,9 @@
 	<bannermenu></bannermenu>
 
 	<update_url></update_url>
-	<version>0.12</version>
-	<date>25/04/2016</date>
-	<changes>Reparado el canal Topbongda, añadido en la versión precedente</changes>
+	<version>0.13</version>
+	<date>27/04/2016</date>
+	<changes>Reparado el canal Topbongda gracias a neno. Añadido canal MotoGPEnNegro</changes>
 
 	<categories>
 		<category>all</category>		
